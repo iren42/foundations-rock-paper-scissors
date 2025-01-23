@@ -47,9 +47,11 @@ function playRound(humanChoice, computerChoice)
 		{
 			case "scissors":
 				console.log("You win: " + humanChoice + " beats " + computerChoice);
+				humanScore++;
 				break;
 			case "rock":
 				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+				computerScore++;
 				break;
 			default:
 				console.log("Sorry, we did not understand");
@@ -61,9 +63,11 @@ function playRound(humanChoice, computerChoice)
 		{
 			case "scissors":
 				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+				computerScore++;
 				break;
 			case "paper":
 				console.log("You win: " + humanChoice + " beats " + computerChoice);
+				humanScore++;
 				break;
 			default:
 				console.log("Sorry, we did not understand");
@@ -75,9 +79,11 @@ function playRound(humanChoice, computerChoice)
 		{
 			case "rock":
 				console.log("You win: " + humanChoice + " beats " + computerChoice);
+				humanScore++;
 				break;
 			case "paper":
 				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+				computerScore++;
 				break;
 			default:
 				console.log("Sorry, we did not understand");
@@ -85,6 +91,21 @@ function playRound(humanChoice, computerChoice)
 	}
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let	humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
 playRound(humanSelection, computerSelection);
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
+
+console.log("Scores: " + humanScore + " for human, " + computerScore + " for computer");
