@@ -41,7 +41,7 @@ function playRound(humanChoice, computerChoice)
 {
 	if (humanChoice == computerChoice)
 		console.log("It's a draw. You played: " + humanChoice);
-	else if (computerChoice == PAPER)
+	else if (computerChoice == "paper")
 	{
 		switch (humanChoice)
 		{
@@ -55,7 +55,7 @@ function playRound(humanChoice, computerChoice)
 				console.log("Sorry, we did not understand");
 		}
 	}
-	else if (computerChoice == ROCK)
+	else if (computerChoice == "rock")
 	{
 		switch (humanChoice)
 		{
@@ -71,7 +71,6 @@ function playRound(humanChoice, computerChoice)
 	}
 	else
 	{
-
 		switch (humanChoice)
 		{
 			case "rock":
