@@ -41,54 +41,22 @@ function playGame()
 	{
 		if (humanChoice == computerChoice)
 			console.log("It's a draw. You both played: " + humanChoice);
-		else if (computerChoice == "paper")
+		else if (computerChoice == "paper" && humanChoice == "rock"
+			|| computerChoice == "scissors" && humanChoice == "paper"
+			|| computerChoice == "rock" && humanChoice == "scissors")
 		{
-			switch (humanChoice)
-			{
-				case "scissors":
-					console.log("You win: " + humanChoice + " beats " + computerChoice);
-					humanScore++;
-					break;
-				case "rock":
-					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-					computerScore++;
-					break;
-				default:
-					console.log("Sorry, we did not understand");
-			}
+			console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+			computerScore++;
 		}
-		else if (computerChoice == "rock")
+		else if (humanChoice == "paper" && computerChoice == "rock"
+			|| humanChoice == "scissors" && computerChoice == "paper"
+			|| humanChoice == "rock" && computerChoice == "scissors")
 		{
-			switch (humanChoice)
-			{
-				case "scissors":
-					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-					computerScore++;
-					break;
-				case "paper":
-					console.log("You win: " + humanChoice + " beats " + computerChoice);
-					humanScore++;
-					break;
-				default:
-					console.log("Sorry, we did not understand");
-			}
+			console.log("You win: " + humanChoice + " beats " + computerChoice);
+			humanScore++;
 		}
 		else
-		{
-			switch (humanChoice)
-			{
-				case "rock":
-					console.log("You win: " + humanChoice + " beats " + computerChoice);
-					humanScore++;
-					break;
-				case "paper":
-					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-					computerScore++;
-					break;
-				default:
-					console.log("Sorry, we did not understand");
-			}
-		}
+			console.log("Sorry, we did not understand");
 	}
 
 	let humanScore = 0;
