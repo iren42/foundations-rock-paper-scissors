@@ -41,16 +41,16 @@ function playGame()
 	{
 		if (humanChoice == computerChoice)
 			console.log("It's a draw. You both played: " + humanChoice);
-		else if (computerChoice == "paper" && humanChoice == "rock"
-			|| computerChoice == "scissors" && humanChoice == "paper"
-			|| computerChoice == "rock" && humanChoice == "scissors")
+		else if (computerChoice == "paper" && humanChoice == "rock" ||
+			computerChoice == "scissors" && humanChoice == "paper" ||
+			computerChoice == "rock" && humanChoice == "scissors")
 		{
 			console.log("You lose: " + computerChoice+ " beats " + humanChoice);
 			computerScore++;
 		}
-		else if (humanChoice == "paper" && computerChoice == "rock"
-			|| humanChoice == "scissors" && computerChoice == "paper"
-			|| humanChoice == "rock" && computerChoice == "scissors")
+		else if (humanChoice == "paper" && computerChoice == "rock" ||
+			humanChoice == "scissors" && computerChoice == "paper" ||
+			humanChoice == "rock" && computerChoice == "scissors")
 		{
 			console.log("You win: " + humanChoice + " beats " + computerChoice);
 			humanScore++;
@@ -71,7 +71,8 @@ function playGame()
 		computerSelection = getComputerChoice();
 		playRound(humanSelection, computerSelection);
 	}
-	console.log("Scores: " + humanScore + " for human, " + computerScore + " for computer");
+	console.log("Scores: " + humanScore + " for human, " + 
+		computerScore + " for computer");
 }
 
 playGame();
