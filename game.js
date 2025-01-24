@@ -2,8 +2,9 @@ const PAPER = 1;
 const ROCK = 2;
 const SCISSORS = 0;
 
-function getRandomInt(max) {
-	return Math.floor(Math.random() * max);
+function getRandomInt(max)
+{
+	return (Math.floor(Math.random() * max));
 }
 
 function numberToString(rand)
@@ -18,9 +19,7 @@ function numberToString(rand)
 
 function getComputerChoice()
 {
-	let rand;
-	rand = getRandomInt(3);
-	return (numberToString(rand));
+	return (numberToString(getRandomInt(3)));
 }
 
 console.log(getComputerChoice());
@@ -30,6 +29,7 @@ console.log(getComputerChoice());
 function getHumanChoice()
 {
 	let userInput;
+
 	userInput = prompt("Choose between rock, paper and scissors", "rock");
 	return (userInput.toLowerCase());
 }
@@ -103,7 +103,6 @@ function playGame()
 		computerSelection = getComputerChoice();
 		playRound(humanSelection, computerSelection);
 	}
-
 	console.log("Scores: " + humanScore + " for human, " + computerScore + " for computer");
 }
 
