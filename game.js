@@ -2,9 +2,6 @@ const PAPER = 1;
 const ROCK = 2;
 const SCISSORS = 0;
 
-let humanScore = 0;
-let computerScore = 0;
-
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
@@ -37,75 +34,77 @@ function getHumanChoice()
 	return (userInput.toLowerCase());
 }
 
-function playRound(humanChoice, computerChoice)
+
+function playGame()
 {
-	if (humanChoice == computerChoice)
-		console.log("It's a draw. You played: " + humanChoice);
-	else if (computerChoice == "paper")
+	function playRound(humanChoice, computerChoice)
 	{
-		switch (humanChoice)
+		if (humanChoice == computerChoice)
+			console.log("It's a draw. You both played: " + humanChoice);
+		else if (computerChoice == "paper")
 		{
-			case "scissors":
-				console.log("You win: " + humanChoice + " beats " + computerChoice);
-				humanScore++;
-				break;
-			case "rock":
-				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-				computerScore++;
-				break;
-			default:
-				console.log("Sorry, we did not understand");
+			switch (humanChoice)
+			{
+				case "scissors":
+					console.log("You win: " + humanChoice + " beats " + computerChoice);
+					humanScore++;
+					break;
+				case "rock":
+					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+					computerScore++;
+					break;
+				default:
+					console.log("Sorry, we did not understand");
+			}
+		}
+		else if (computerChoice == "rock")
+		{
+			switch (humanChoice)
+			{
+				case "scissors":
+					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+					computerScore++;
+					break;
+				case "paper":
+					console.log("You win: " + humanChoice + " beats " + computerChoice);
+					humanScore++;
+					break;
+				default:
+					console.log("Sorry, we did not understand");
+			}
+		}
+		else
+		{
+			switch (humanChoice)
+			{
+				case "rock":
+					console.log("You win: " + humanChoice + " beats " + computerChoice);
+					humanScore++;
+					break;
+				case "paper":
+					console.log("You lose: " + computerChoice+ " beats " + humanChoice);
+					computerScore++;
+					break;
+				default:
+					console.log("Sorry, we did not understand");
+			}
 		}
 	}
-	else if (computerChoice == "rock")
+
+	let humanScore = 0;
+	let computerScore = 0;
+	let	roundNb = 0;
+	let	humanSelection;
+	let computerSelection;
+
+	while (roundNb++ < 5)
 	{
-		switch (humanChoice)
-		{
-			case "scissors":
-				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-				computerScore++;
-				break;
-			case "paper":
-				console.log("You win: " + humanChoice + " beats " + computerChoice);
-				humanScore++;
-				break;
-			default:
-				console.log("Sorry, we did not understand");
-		}
+		humanSelection = getHumanChoice();
+		computerSelection = getComputerChoice();
+		playRound(humanSelection, computerSelection);
 	}
-	else
-	{
-		switch (humanChoice)
-		{
-			case "rock":
-				console.log("You win: " + humanChoice + " beats " + computerChoice);
-				humanScore++;
-				break;
-			case "paper":
-				console.log("You lose: " + computerChoice+ " beats " + humanChoice);
-				computerScore++;
-				break;
-			default:
-				console.log("Sorry, we did not understand");
-		}
-	}
+
+	console.log("Scores: " + humanScore + " for human, " + computerScore + " for computer");
 }
 
-let	humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
-
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
-
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
-
-console.log("Scores: " + humanScore + " for human, " + computerScore + " for computer");
+playGame();
