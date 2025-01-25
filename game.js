@@ -2,7 +2,7 @@ const PAPER = 1;
 const ROCK = 2;
 const SCISSORS = 0;
 
-const MAXROUND = 1;
+const MAXROUND = 0;
 
 function getRandomInt(max)
 {
@@ -47,6 +47,7 @@ function playGame()
 		{
 			console.log("You lose: " + computerChoice+ " beats " + humanChoice);
 			computerScore++;
+			computerScoreDiv.textContent = computerScore;
 		}
 		else if (humanChoice == "paper" && computerChoice == "rock" ||
 			humanChoice == "scissors" && computerChoice == "paper" ||
@@ -54,6 +55,7 @@ function playGame()
 		{
 			console.log("You win: " + humanChoice + " beats " + computerChoice);
 			humanScore++;
+			humanScoreDiv.textContent = humanScore;
 		}
 		else
 			console.log("Sorry, we did not understand");
@@ -65,14 +67,28 @@ function playGame()
 	let	humanSelection = "";
 	let computerSelection = "";
 
-	while (roundNb++ < MAXROUND)
-	{
-		humanSelection = getHumanChoice();
-		computerSelection = getComputerChoice();
-		playRound(humanSelection, computerSelection);
-	}
+	const	rock = document.querySelector("#rock");
+	const	paper = document.querySelector("#paper");
+	const	scissors = document.querySelector("#scissors");
+	const	humanScoreDiv = document.querySelector("#humanScore");
+	const	computerScoreDiv = document.querySelector("#computerScore");
+
+	computerScoreDiv.textContent = computerScore;
+	humanScoreDiv.textContent = humanScore;
+
+	rock.addEventListener("click", event => {
+		playRound("rock", getComputerChoice());
+	});
+	paper.addEventListener("click", event => {
+		playRound("paper", getComputerChoice());
+	});
+	scissors.addEventListener("click", event => {
+		playRound("scissors", getComputerChoice());
+	});
+
 	console.log("Scores: " + humanScore + " for human, " + 
 		computerScore + " for computer");
 }
 
 playGame();
+
