@@ -40,6 +40,13 @@ function playGame()
 	{
 		return (humanScore < MAXSCORE && computerScore < MAXSCORE);
 	}
+	function announceWinner()
+	{
+		let winnerName = "Human";
+		if (humanScore < computerScore)
+			winnerName = "Computer";
+		winnerDiv.textContent = "Le gagnant est " + winnerName;	
+	}
 	function playRound(humanChoice, computerChoice)
 	{
 		if (!continueGame())
@@ -53,6 +60,8 @@ function playGame()
 			console.log("You lose: " + computerChoice+ " beats " + humanChoice);
 			computerScore++;
 			computerScoreDiv.textContent = computerScore;
+			if (!continueGame())
+				announceWinner();
 		}
 		else if (humanChoice == "paper" && computerChoice == "rock" ||
 			humanChoice == "scissors" && computerChoice == "paper" ||
@@ -61,6 +70,8 @@ function playGame()
 			console.log("You win: " + humanChoice + " beats " + computerChoice);
 			humanScore++;
 			humanScoreDiv.textContent = humanScore;
+			if (!continueGame())
+				announceWinner();
 		}
 		else
 			console.log("Sorry, we did not understand");
@@ -76,6 +87,7 @@ function playGame()
 	const	scissors = document.querySelector("#scissors");
 	const	humanScoreDiv = document.querySelector("#humanScore");
 	const	computerScoreDiv = document.querySelector("#computerScore");
+	const	winnerDiv= document.querySelector("#winner");
 
 	computerScoreDiv.textContent = computerScore;
 	humanScoreDiv.textContent = humanScore;
