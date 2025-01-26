@@ -2,7 +2,7 @@ const PAPER = 1;
 const ROCK = 2;
 const SCISSORS = 0;
 
-const MAXROUND = 0;
+const MAXSCORE = 5;
 
 function getRandomInt(max)
 {
@@ -34,11 +34,16 @@ function getHumanChoice()
 	return (userInput.toLowerCase());
 }
 
-
 function playGame()
 {
+	function continueGame()
+	{
+		return (humanScore < MAXSCORE && computerScore < MAXSCORE);
+	}
 	function playRound(humanChoice, computerChoice)
 	{
+		if (!continueGame())
+			return ;
 		if (humanChoice == computerChoice)
 			console.log("It's a draw. You both played: " + humanChoice);
 		else if (computerChoice == "paper" && humanChoice == "rock" ||
@@ -61,11 +66,10 @@ function playGame()
 			console.log("Sorry, we did not understand");
 	}
 
+
 	let humanScore = 0;
 	let computerScore = 0;
 	let	roundNb = 0;
-	let	humanSelection = "";
-	let computerSelection = "";
 
 	const	rock = document.querySelector("#rock");
 	const	paper = document.querySelector("#paper");
@@ -86,8 +90,6 @@ function playGame()
 		playRound("scissors", getComputerChoice());
 	});
 
-	console.log("Scores: " + humanScore + " for human, " + 
-		computerScore + " for computer");
 }
 
 playGame();
